@@ -11,8 +11,8 @@ RUN apt-get update && apt-get install -y \
 RUN pip install poetry==1.8.3
 RUN poetry config virtualenvs.create false
 
-COPY pyproject.toml .
-COPY poetry.lock .
+COPY pyproject.toml poetry.lock ./
+
 RUN poetry install --only main
 
 COPY pdf_bot.py .
