@@ -1,6 +1,7 @@
 *
 !*.py
-!requirements.txt
+!poetry.lock
+!pyproject.toml
 !images/*
 !front-end/*
 front-end/node_modules/*
