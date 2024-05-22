@@ -8,9 +8,12 @@ RUN apt-get update && apt-get install -y \
     software-properties-common \
     && rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt .
+RUN pip install poetry==1.8.3
+RUN poetry config virtualenvs.create false
 
-RUN pip install --upgrade -r requirements.txt
+COPY pyproject.toml .
+COPY poetry.lock .
+RUN poetry install --only main
 
 COPY bot.py .
 COPY utils.py .

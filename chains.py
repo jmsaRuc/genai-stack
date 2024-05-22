@@ -29,9 +29,9 @@ from langchain_google_genai import GoogleGenerativeAIEmbeddings
 def load_embedding_model(embedding_model_name: str, logger=BaseLogger(), config={}):
     if embedding_model_name == "ollama":
         embeddings = OllamaEmbeddings(
-            base_url=config["ollama_base_url"], model="llama2"
+            base_url=config["ollama_base_url"], model="nomic-embed-text:v1.5"
         )
-        dimension = 4096
+        dimension = 768
         logger.info("Embedding: Using Ollama")
     elif embedding_model_name == "openai":
         embeddings = OpenAIEmbeddings()
@@ -103,7 +103,7 @@ def configure_llm_only_chain(llm):
         user_input: str, callbacks: List[Any], prompt=chat_prompt
     ) -> str:
         chain = prompt | llm
-        answer = chain.invoke(
+        answer =  chain.invoke(
             {"question": user_input}, config={"callbacks": callbacks}
         ).content
         return {"answer": answer}

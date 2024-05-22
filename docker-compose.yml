@@ -76,8 +76,6 @@ services:
     depends_on:
       database:
         condition: service_healthy
-      pull-model:
-        condition: service_completed_successfully
     x-develop:
       watch:
         - action: rebuild
@@ -119,8 +117,6 @@ services:
     depends_on:
       database:
         condition: service_healthy
-      pull-model:
-        condition: service_completed_successfully
     x-develop:
       watch:
         - action: rebuild
@@ -158,8 +154,6 @@ services:
     depends_on:
       database:
         condition: service_healthy
-      pull-model:
-        condition: service_completed_successfully
     x-develop:
       watch:
         - action: rebuild
@@ -199,8 +193,6 @@ services:
     depends_on:
       database:
         condition: service_healthy
-      pull-model:
-        condition: service_completed_successfully
     x-develop:
       watch:
         - action: rebuild
